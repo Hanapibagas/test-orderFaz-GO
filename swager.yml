@@ -1,0 +1,272 @@
+openapi: "3.0.2"
+info:
+  title: API Title
+  version: "1.0"
+servers:
+  - url: https://api.server.test/
+
+paths:
+  /register:
+    post:
+      tags:
+        - "Athentication"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+                  example: hanapi bagas pamungkas
+                email:
+                  type: string
+                  example: hanafibagas4@gmail.com
+                msisdn:
+                  type: string
+                  example: 62123456789
+                password:
+                  type: string
+                  example: 1234567890
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      user_name:
+                        type: string
+                        example: hanapi bagas pamungkas
+                      email:
+                        type: string
+                        example: hanafibagas4@gmail.com
+                      msisdn:
+                        type: string
+                        example: 62123456789
+                      token:
+                        type: string
+                        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        "400":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: MSISDN must start with '62'
+  /login:
+    post:
+      tags:
+        - "Athentication"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msisdn:
+                  type: string
+                  example: 62123456789
+                password:
+                  type: string
+                  example: 1234567890
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      user_name:
+                        type: string
+                        example: hanapi bagas pamungkas
+                      email:
+                        type: string
+                        example: hanafibagas4@gmail.com
+                      msisdn:
+                        type: string
+                        example: 62123456789
+                      token:
+                        type: string
+                        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        "400":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bad request
+  /user:
+    get:
+      tags:
+        - "Athentication"
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      uuid:
+                        type: string
+                        example: ed6515a6-5c87-47c6-be59-2cae520433a2
+                      user_name:
+                        type: string
+                        example: hanapi bagas pamungkas
+                      email:
+                        type: string
+                        example: hanafibagas4@gmail.com
+                      msisdn:
+                        type: string
+                        example: 62123456789
+        "400":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bad request
+
+  /logistic?origin_name=&dastination_name=:
+    get:
+      tags:
+        - "Logistic"
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      logistic_name:
+                        type: string
+                        example: JNE
+                      amount:
+                        type: string
+                        example: 10000
+                      dastination_name:
+                        type: string
+                        example: JAKARTA
+                      origin_name:
+                        type: string
+                        example: BANDUNG
+                      duration:
+                        type: string
+                        example: 2-4
+        "400":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bad reques
+  /logistic:
+    post:
+      tags:
+        - "Logistic"
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                logistic_name:
+                  type: string
+                  example: JNE
+                amount:
+                  type: string
+                  example: 10000
+                dastination_name:
+                  type: string
+                  example: JAKARTA
+                origin_name:
+                  type: string
+                  example: BANDUNG
+                duration:
+                  type: string
+                  example: 2-4
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      logistic_name:
+                        type: string
+                        example: JNE
+                      amount:
+                        type: string
+                        example: 10000
+                      dastination_name:
+                        type: string
+                        example: JAKARTA
+                      origin_name:
+                        type: string
+                        example: BANDUNG
+                      duration:
+                        type: string
+                        example: 2-4
+        "400":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bad reques
