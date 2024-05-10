@@ -14,7 +14,7 @@
 ### Menjalankan Server
 Untuk menjalankan server, gunakan perintah:
     ```
-1. Masi menjalankan secara manual untuk setiap app
+1. Masi menjalankan secara manual untuk setiap app untu perintanya go run main.go
 
 Server akan berjalan di http://localhost:8080 di app OrderFaz-1 dan http://localhost:8070 di app OrderFaz-2.
 
